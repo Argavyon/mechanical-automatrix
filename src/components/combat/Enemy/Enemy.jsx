@@ -6,7 +6,7 @@ function Enemy(props) {
   return (
     <div className="enemyContainer">
       <p className="text">{props.name}</p>
-      <EnemyAttackBar />
+      <EnemyAttackBar attackTime={3} attackDamage={3} />
     </div>
   );
 }
