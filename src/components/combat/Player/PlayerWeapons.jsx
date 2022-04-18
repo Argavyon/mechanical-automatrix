@@ -1,25 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import "styles/combat/Player/PlayerWeapons.css";
 import PlayerWeapon from "./PlayerWeapon";
+import gameContext from "gameState/gameContext";
 
 const PlayerWeapons = () => {
+  // Reference to the game state
+  const gameState = useContext(gameContext);
+  const playerWeapons = gameState.playerState.weapons;
+
   return (
     <div className="weaponsContainer">
-      <PlayerWeapon
-        weaponName="Bang"
-        weaponAmmoCurrent="30"
-        weaponsAmmoMax="100"
-      />
-      <PlayerWeapon
-        weaponName="Throwing Dagger"
-        weaponAmmoCurrent="50"
-        weaponsAmmoMax="100"
-      />
-      <PlayerWeapon
-        weaponName="Bang"
-        weaponAmmoCurrent="30"
-        weaponsAmmoMax="100"
-      />
+      {playerWeapons.map((weapon, index) => {
+        return (
+          <PlayerWeapon
+            weaponName={weapon.name}
+            weaponAmmoCurrent={weapon.ammoCurrent}
+            weaponAmmoMax={weapon.ammoMax}
+          />
+        );
+      })}
     </div>
   );
 };

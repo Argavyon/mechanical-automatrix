@@ -1,8 +1,13 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import { useInterval } from "hooks/useInterval";
 import "styles/combat/Enemy/EnemyAttackBar.css";
+import gameContext from "gameState/gameContext";
 
 function EnemyAttackBar(props) {
+  // Reference to the game state
+  const gameState = useContext(gameContext);
+  const playerState = gameState.playerState;
+
   // Set the initial state of the attack bar.
   // This is used as the timer for the attack.
   const [bar, setBar] = useState(0);
@@ -16,7 +21,9 @@ function EnemyAttackBar(props) {
       setBar(bar + 1);
       barElement.current.style.width = `${bar + 1}%`;
     } else {
+      playerState.hp.current -= props.attackDamage;
       console.log(`Player took ${props.attackDamage} damage`);
+      console.log(playerState.hp.current);
       setBar(0);
     }
   };
