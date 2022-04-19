@@ -3,7 +3,7 @@ import "styles/combat/Player/PlayerWeapons.css";
 import PlayerWeapon from "./PlayerWeapon";
 import gameContext from "gameState/gameContext";
 
-const PlayerWeapons = () => {
+const PlayerWeapons: React.FC = () => {
   // Reference to the game state
   const gameState = useContext(gameContext);
   const playerWeapons = gameState.playerState.weapons;

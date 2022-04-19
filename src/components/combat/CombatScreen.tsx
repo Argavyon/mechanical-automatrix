@@ -4,7 +4,7 @@ import Player from "./Player/Player";
 import Loot from "./Loot";
 import "styles/combat/CombatScreen.css";
 
-const CombatScreen = () => {
+const CombatScreen: React.FC = () => {
   return (
     <div className="combatScreen">
       <Loot />

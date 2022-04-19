@@ -1,7 +1,7 @@
 import React from "react";
 import "styles/combat/Loot.css";
 
-const Loot = () => {
+const Loot: React.FC = () => {
   return (
     <div className="lootContainer">
       <p className="lootText">Loot</p>
