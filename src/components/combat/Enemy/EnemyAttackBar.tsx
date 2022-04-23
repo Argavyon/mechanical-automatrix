@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { useInterval } from "hooks/useInterval";
+import { useInterval } from "utils/useInterval";
 import "styles/combat/Enemy/EnemyAttackBar.css";
 import { IEnemyAttackBarProps } from "types/Enemy";
 import { useDispatch, useSelector } from "react-redux";
