@@ -4,18 +4,24 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "styles/combat/Player/PlayerWeapon.css";
 import { IPlayerWeaponProps } from "types/Weapon";
+import random from "utils/random";
 
-const PlayerWeapon: React.FC<IPlayerWeaponProps> = (
-  props: IPlayerWeaponProps
-) => {
-  // const weapons = useSelector((state: RootState) => state.player.weapons);
+const PlayerWeapon: React.FC<IPlayerWeaponProps> = ({
+  ...props
+}: IPlayerWeaponProps) => {
+  const weapon = useSelector(
+    (state: RootState) => state.player.weapons[props.weaponIndex]
+  );
   const dispatch = useDispatch();
   const [ammoCurrent, setAmmoCurrent] = useState(props.ammoCurrent);
 
   const useWeapon = () => {
     // If the max ammo is infinite, then the weapon is always usable.
     if (ammoCurrent > 0 || props.ammoMax === Infinity) {
-      dispatch(fireWeapon({ weapon: props.weaponIndex }));
+      dispatch(fireWeapon({ weapon, index: props.weaponIndex }));
+      const damage = random(weapon.damageMin, weapon.damageMax);
+      // console.log(weapon);
+      // console.log(damage);
     }
   };
 
