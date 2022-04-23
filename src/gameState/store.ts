@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import playerReducer from "./playerSlice";
+import enemyReducer from "./EnemySlice";
 
 const store = configureStore({
   reducer: {
     player: playerReducer,
+    enemy: enemyReducer,
   },
 });
 

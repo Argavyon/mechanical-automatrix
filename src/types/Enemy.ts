@@ -1,7 +1,9 @@
 export interface IEnemy {
   name: string;
-  healthMax: number;
-  healthCurrent: number;
+  health: {
+    max: number;
+    current: number;
+  };
   attacks: IEnemyAttack[];
 }
 
