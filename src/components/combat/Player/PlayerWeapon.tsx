@@ -1,6 +1,7 @@
 import { fireWeapon } from "gameState/playerSlice";
+import { setEnemyHealth } from "gameState/EnemySlice";
 import { RootState } from "gameState/store";
-import React, { useState } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "styles/combat/Player/PlayerWeapon.css";
 import { IPlayerWeaponProps } from "types/Weapon";
@@ -12,6 +13,7 @@ const PlayerWeapon: React.FC<IPlayerWeaponProps> = ({
   const weapon = useSelector(
     (state: RootState) => state.player.weapons[props.weaponIndex]
   );
+  const enemy = useSelector((state: RootState) => state.enemy);
   const dispatch = useDispatch();
 
   const useWeapon = () => {
@@ -19,8 +21,7 @@ const PlayerWeapon: React.FC<IPlayerWeaponProps> = ({
     if (weapon.ammoCurrent > 0 || props.ammoMax === Infinity) {
       dispatch(fireWeapon({ weapon, index: props.weaponIndex }));
       const damage = random(weapon.damageMin, weapon.damageMax);
-      // console.log(weapon);
-      // console.log(damage);
+      dispatch(setEnemyHealth(enemy.health.current - damage));
     }
   };
 

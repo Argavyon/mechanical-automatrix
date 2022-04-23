@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import IPlayer from "types/Player";
 
-const initialPlayerState = {
+const initialPlayerState: IPlayer = {
   health: {
     max: 100,
     current: 100,
