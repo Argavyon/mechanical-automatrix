@@ -1,17 +1,22 @@
-import React, { useRef } from "react";
+import { RootState } from "gameState/store";
+import React, { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import "styles/combat/Player/PlayerHealth.css";
 
 const PlayerHealth: React.FC = () => {
-  const playerHealth = useSelector((state: any) => state.player.health.current);
+  const playerHealth = useSelector(
+    (state: RootState) => state.player.health.current
+  );
   const healthBar = useRef<HTMLParagraphElement>(null);
 
-  healthBar.current!.style.width = `${playerHealth}%`;
+  useEffect(() => {
+    healthBar.current!.style.width = `${playerHealth}%`;
+  }, [playerHealth]);
 
   return (
     <div className="playerHealthContainer">
       <p className="innerHealthBar" ref={healthBar}>
-        {/* {playerHealth} */}
+        {playerHealth}
       </p>
     </div>
   );

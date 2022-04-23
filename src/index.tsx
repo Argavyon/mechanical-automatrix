@@ -1,4 +1,4 @@
-import { store } from "gameState/store";
+import store from "gameState/store";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";

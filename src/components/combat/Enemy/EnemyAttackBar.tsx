@@ -4,12 +4,13 @@ import "styles/combat/Enemy/EnemyAttackBar.css";
 import { IEnemyAttackBarProps } from "types/Enemy";
 import { useDispatch, useSelector } from "react-redux";
 import { setPlayerHealth } from "gameState/playerSlice";
+import { RootState } from "gameState/store";
 
 const EnemyAttackBar: React.FC<IEnemyAttackBarProps> = (
   props: IEnemyAttackBarProps
 ) => {
   // Reference to the game state
-  const playerHP = useSelector((state: any) => state.player.health);
+  const playerHP = useSelector((state: RootState) => state.player.health);
   const dispatch = useDispatch();
 
   // Set the initial state of the attack bar.
