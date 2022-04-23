@@ -7,17 +7,17 @@
 
 ## Combat
 
-- [ ] Screen design
+- [x] Screen design
 - [ ] Enemies
-  - [ ] Hit points
+  - [x] Hit points
   - [ ] Attacks
-  - [ ] Timers
+  - [x] Timers
   - [ ] Patterns
   - [ ] Loot drops
 - [ ] Player
-  - [ ] Hit points
+  - [x] Hit points
   - [ ] Weapons
-  - [ ] Damage
+  - [x] Damage
   - [ ] Time to hit
   - [ ] Hit can interrupts enemy attack
 - [ ] Buffs/debuffs

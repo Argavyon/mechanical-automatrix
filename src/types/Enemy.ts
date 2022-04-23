@@ -5,6 +5,10 @@ export interface IEnemy {
     current: number;
   };
   attacks: IEnemyAttack[];
+  attackBar: {
+    current: number;
+    max: number;
+  };
 }
 
 interface IEnemyAttack {

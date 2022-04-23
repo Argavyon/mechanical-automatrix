@@ -15,6 +15,10 @@ const initialEnemyState: IEnemy = {
       damageMax: 20,
     },
   ],
+  attackBar: {
+    current: 0,
+    max: 100,
+  },
 };
 
 const enemySlice = createSlice({
@@ -24,9 +28,12 @@ const enemySlice = createSlice({
     setEnemyHealth: (state, action) => {
       state.health.current = action.payload;
     },
+    setAttackBar: (state, action) => {
+      state.attackBar.current = action.payload;
+    },
   },
 });
 
-export const { setEnemyHealth } = enemySlice.actions;
+export const { setEnemyHealth, setAttackBar } = enemySlice.actions;
 
 export default enemySlice.reducer;
