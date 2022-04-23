@@ -9,7 +9,7 @@
   width: 30%;
 }
 
-.innerHealthBar {
+.enemyHealthContainer > .innerHealthBar {
   background-color: rgb(231, 24, 24);
   width: 10%;
   height: 100%;

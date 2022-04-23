@@ -4,7 +4,7 @@ import "styles/combat/Player/PlayerHealth.css";
 const PlayerHealth: React.FC = () => {
   return (
     <div className="playerHealthContainer">
-      <p>HealthBar</p>
+      <p className="innerHealthBar">HealthBar</p>
     </div>
   );
 };
