@@ -1,4 +1,4 @@
-import { IPlayerWeapon } from "./Weapon";
+import { IPlayerWeapon } from "./WeaponTypes";
 
 interface IPlayer {
   health: {

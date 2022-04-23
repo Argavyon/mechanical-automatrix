@@ -3,7 +3,7 @@ import "styles/combat/Player/PlayerWeapons.css";
 import PlayerWeapon from "./PlayerWeapon";
 import { useSelector } from "react-redux";
 import { RootState } from "gameState/store";
-import { IPlayerWeapon } from "types/Weapon";
+import { IPlayerWeapon } from "types/WeaponTypes";
 
 const PlayerWeapons: React.FC = () => {
   // Reference to the game state

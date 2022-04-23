@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import "styles/combat/Enemy/EnemyAttackBar.css";
-import { IAttackBarProps } from "types/Enemy";
+import { IAttackBarProps } from "types/EnemyTypes";
 import { useDispatch, useSelector } from "react-redux";
 import { setPlayerHealth } from "gameState/playerSlice";
 import { RootState } from "gameState/store";

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IEnemy } from "types/Enemy";
+import { IEnemy } from "types/EnemyTypes";
 
 const initialEnemyState: IEnemy = {
   name: "Slime",

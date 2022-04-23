@@ -8,7 +8,7 @@ import { RootState } from "gameState/store";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "styles/combat/Player/PlayerWeapon.css";
-import { IPlayerWeaponProps } from "types/Weapon";
+import { IPlayerWeaponProps } from "types/WeaponTypes";
 import random from "utils/random";
 
 const PlayerWeapon: React.FC<IPlayerWeaponProps> = ({
