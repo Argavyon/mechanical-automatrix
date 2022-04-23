@@ -1,37 +1,32 @@
 import React, { useState } from "react";
 import "styles/combat/Player/PlayerWeapon.css";
-
-interface IPlayerWeaponProps {
-  weaponName: string;
-  weaponAmmoCurrent: number;
-  weaponAmmoMax: number;
-}
+import { IPlayerWeaponProps } from "types/Weapon";
 
 const PlayerWeapon: React.FC<IPlayerWeaponProps> = (
   props: IPlayerWeaponProps
 ) => {
-  const [ammoCurrent, setAmmoCurrent] = useState(props.weaponAmmoCurrent);
+  const [ammoCurrent, setAmmoCurrent] = useState(props.ammoCurrent);
 
   const useWeapon = () => {
     // If the max ammo is infinite, then the weapon is always usable.
-    if (ammoCurrent > 0 || props.weaponAmmoMax === Infinity) {
+    if (ammoCurrent > 0 || props.ammoMax === Infinity) {
       console.log("Fire weapon");
       setAmmoCurrent(ammoCurrent - 1);
     }
   };
 
-  if (props.weaponAmmoMax === Infinity) {
+  if (props.ammoMax === Infinity) {
     return (
       <div className="weaponContainer" onClick={useWeapon}>
-        <p className="weaponText">{props.weaponName}</p>
+        <p className="weaponText">{props.name}</p>
       </div>
     );
   } else {
     return (
       <div className="weaponContainer" onClick={useWeapon}>
-        <p className="weaponText">{props.weaponName}</p>
+        <p className="weaponText">{props.name}</p>
         <p className="weaponText">
-          {ammoCurrent} / {props.weaponAmmoMax}
+          {ammoCurrent} / {props.ammoMax}
         </p>
       </div>
     );

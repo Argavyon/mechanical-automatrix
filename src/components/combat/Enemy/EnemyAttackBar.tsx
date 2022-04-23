@@ -2,11 +2,7 @@ import React, { useState, useRef, useContext } from "react";
 import { useInterval } from "hooks/useInterval";
 import "styles/combat/Enemy/EnemyAttackBar.css";
 import gameContext from "gameState/gameContext";
-
-interface IEnemyAttackBarProps {
-  attackTime: number;
-  attackDamage: number;
-}
+import { IEnemyAttackBarProps } from "types/Enemy";
 
 const EnemyAttackBar: React.FC<IEnemyAttackBarProps> = (
   props: IEnemyAttackBarProps
