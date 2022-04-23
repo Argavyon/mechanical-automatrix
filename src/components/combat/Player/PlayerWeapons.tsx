@@ -12,6 +12,7 @@ const PlayerWeapons: React.FC = () => {
       {playerWeapons.map((weapon: IPlayerWeaponProps, index: number) => {
         return (
           <PlayerWeapon
+            key={weapon.name}
             name={weapon.name}
             ammoCurrent={weapon.ammoCurrent}
             ammoMax={weapon.ammoMax}
