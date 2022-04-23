@@ -10,7 +10,7 @@
 - [x] Screen design
 - [ ] Enemies
   - [x] Hit points
-  - [ ] Attacks
+  - [x] Multiple attacks
   - [x] Timers
   - [ ] Patterns
   - [ ] Loot drops

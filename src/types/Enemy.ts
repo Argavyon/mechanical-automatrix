@@ -4,7 +4,8 @@ export interface IEnemy {
     max: number;
     current: number;
   };
-  attacks: IEnemyAttack[];
+  attackList: IEnemyAttack[];
+  currentAttackIndex: number;
   attackBar: {
     current: number;
     max: number;
@@ -16,9 +17,10 @@ interface IEnemyAttack {
   attackTime: number;
   damageMin: number;
   damageMax: number;
+  isInterruptable: boolean;
 }
 
-export interface IEnemyAttackBarProps {
+export interface IAttackBarProps {
   attackTime: number;
   attackDamage: number;
 }

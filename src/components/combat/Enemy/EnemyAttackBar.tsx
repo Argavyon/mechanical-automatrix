@@ -1,14 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import "styles/combat/Enemy/EnemyAttackBar.css";
-import { IEnemyAttackBarProps } from "types/Enemy";
+import { IAttackBarProps } from "types/Enemy";
 import { useDispatch, useSelector } from "react-redux";
 import { setPlayerHealth } from "gameState/playerSlice";
 import { RootState } from "gameState/store";
-import { setAttackBar, setEnemyHealth } from "gameState/EnemySlice";
+import { setAttackBar, getNextAttack } from "gameState/EnemySlice";
 
-const EnemyAttackBar: React.FC<IEnemyAttackBarProps> = (
-  props: IEnemyAttackBarProps
-) => {
+const EnemyAttackBar: React.FC<IAttackBarProps> = (props: IAttackBarProps) => {
   // Reference to the game state
   const playerHP = useSelector((state: RootState) => state.player.health);
   const EnemyAttackBar = useSelector(
@@ -22,8 +20,8 @@ const EnemyAttackBar: React.FC<IEnemyAttackBarProps> = (
   // DOM reference to the bar
   const barElement = useRef<HTMLParagraphElement>(null);
 
-  useEffect(() => {
-    setTimeout(() => {
+  useEffect((): void => {
+    setTimeout((): void => {
       if (EnemyAttackBar.current < EnemyAttackBar.max) {
         dispatch(setAttackBar(EnemyAttackBar.current + 1));
         barElement.current!.style.width = `${EnemyAttackBar.current + 1}%`;
@@ -31,6 +29,7 @@ const EnemyAttackBar: React.FC<IEnemyAttackBarProps> = (
         // Attack is done.
         dispatch(setPlayerHealth(playerHP.current - props.attackDamage));
         dispatch(setAttackBar(0));
+        dispatch(getNextAttack());
       }
     }, timePerBarIncrease);
   }, [EnemyAttackBar.current]);

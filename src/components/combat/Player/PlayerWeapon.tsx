@@ -1,5 +1,9 @@
 import { fireWeapon } from "gameState/playerSlice";
-import { setEnemyHealth } from "gameState/EnemySlice";
+import {
+  getNextAttack,
+  setAttackBar,
+  setEnemyHealth,
+} from "gameState/EnemySlice";
 import { RootState } from "gameState/store";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -19,9 +23,18 @@ const PlayerWeapon: React.FC<IPlayerWeaponProps> = ({
   const useWeapon = () => {
     // If the max ammo is infinite, then the weapon is always usable.
     if (weapon.ammoCurrent > 0 || props.ammoMax === Infinity) {
+      // If the weapon has ammo, then use it.
       dispatch(fireWeapon({ weapon, index: props.weaponIndex }));
+
+      // Calculate and apply the damage.
       const damage = random(weapon.damageMin, weapon.damageMax);
       dispatch(setEnemyHealth(enemy.health.current - damage));
+
+      // If the enemy's attack can be interrupted, then interrupt it.
+      if (enemy.attackList[enemy.currentAttackIndex].isInterruptable) {
+        dispatch(setAttackBar(0));
+        dispatch(getNextAttack());
+      }
     }
   };
 
