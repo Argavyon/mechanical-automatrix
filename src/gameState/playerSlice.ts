@@ -27,8 +27,7 @@ export const playerSlice = createSlice({
       state.health.current = action.payload;
     },
     fireWeapon: (state, action) => {
-      const { weapon, index } = action.payload;
-      console.log(weapon, index);
+      const { index } = action.payload;
       state.weapons[index].ammoCurrent--;
     },
   },

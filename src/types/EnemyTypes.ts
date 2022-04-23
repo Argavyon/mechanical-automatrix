@@ -10,6 +10,7 @@ export interface IEnemy {
     current: number;
     max: number;
   };
+  isInterrupted: boolean;
 }
 
 interface IEnemyAttack {

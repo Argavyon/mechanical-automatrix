@@ -19,7 +19,7 @@
   - [ ] Weapons
   - [x] Damage
   - [ ] Time to hit
-  - [ ] Hit can interrupts enemy attack
+  - [x] Hit can interrupts enemy attack
 - [ ] Buffs/debuffs
   - [ ] Poison
   - [ ] Slowness

@@ -28,6 +28,7 @@ const initialEnemyState: IEnemy = {
     current: 0,
     max: 100,
   },
+  isInterrupted: false,
 };
 
 const enemySlice = createSlice({
@@ -46,10 +47,13 @@ const enemySlice = createSlice({
           ? 0
           : state.currentAttackIndex + 1;
     },
+    setIsInterrupted: (state, action) => {
+      state.isInterrupted = action.payload;
+    },
   },
 });
 
-export const { setEnemyHealth, setAttackBar, getNextAttack } =
+export const { setEnemyHealth, setAttackBar, getNextAttack, setIsInterrupted } =
   enemySlice.actions;
 
 export default enemySlice.reducer;
