@@ -1,15 +1,16 @@
-import React, { useState, useRef, useContext } from "react";
+import React, { useState, useRef } from "react";
 import { useInterval } from "hooks/useInterval";
 import "styles/combat/Enemy/EnemyAttackBar.css";
-import gameContext from "gameState/gameContext";
 import { IEnemyAttackBarProps } from "types/Enemy";
+import { useDispatch, useSelector } from "react-redux";
+import { setPlayerHealth } from "gameState/playerSlice";
 
 const EnemyAttackBar: React.FC<IEnemyAttackBarProps> = (
   props: IEnemyAttackBarProps
 ) => {
   // Reference to the game state
-  const gameState = useContext(gameContext);
-  const playerState = gameState.playerState;
+  const playerHP = useSelector((state: any) => state.player.health);
+  const dispatch = useDispatch();
 
   // Set the initial state of the attack bar.
   // This is used as the timer for the attack.
@@ -24,9 +25,10 @@ const EnemyAttackBar: React.FC<IEnemyAttackBarProps> = (
       setBar(bar + 1);
       barElement.current!.style.width = `${bar + 1}%`;
     } else {
-      playerState.hp.current -= props.attackDamage;
+      // Attack is done.
+      dispatch(setPlayerHealth(playerHP.current - props.attackDamage));
       console.log(`Player took ${props.attackDamage} damage`);
-      console.log(playerState.hp.current);
+      console.log(playerHP.current);
       setBar(0);
     }
   };
