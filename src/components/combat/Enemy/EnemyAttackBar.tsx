@@ -28,8 +28,8 @@ const EnemyAttackBar: React.FC<IEnemyAttackBarProps> = (
     } else {
       // Attack is done.
       dispatch(setPlayerHealth(playerHP.current - props.attackDamage));
-      console.log(`Player took ${props.attackDamage} damage`);
-      console.log(playerHP.current);
+      // console.log(`Player took ${props.attackDamage} damage`);
+      // console.log(playerHP.current);
       setBar(0);
     }
   };

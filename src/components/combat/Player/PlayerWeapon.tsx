@@ -13,11 +13,10 @@ const PlayerWeapon: React.FC<IPlayerWeaponProps> = ({
     (state: RootState) => state.player.weapons[props.weaponIndex]
   );
   const dispatch = useDispatch();
-  const [ammoCurrent, setAmmoCurrent] = useState(props.ammoCurrent);
 
   const useWeapon = () => {
     // If the max ammo is infinite, then the weapon is always usable.
-    if (ammoCurrent > 0 || props.ammoMax === Infinity) {
+    if (weapon.ammoCurrent > 0 || props.ammoMax === Infinity) {
       dispatch(fireWeapon({ weapon, index: props.weaponIndex }));
       const damage = random(weapon.damageMin, weapon.damageMax);
       // console.log(weapon);
@@ -36,7 +35,7 @@ const PlayerWeapon: React.FC<IPlayerWeaponProps> = ({
       <div className="weaponContainer" onClick={useWeapon}>
         <p className="weaponText">{props.name}</p>
         <p className="weaponText">
-          {ammoCurrent} / {props.ammoMax}
+          {weapon.ammoCurrent} / {props.ammoMax}
         </p>
       </div>
     );
