@@ -5,12 +5,13 @@ export interface IPlayerWeapon {
   damageMin: number;
   damageMax: number;
   attackTime: number;
-  cooldownTime: number;
+  attackCooldownTime: number;
   price?: number;
   amountPerPurchase?: number;
 }
 export interface IPlayerWeaponProps {
   name: string;
+  weaponIndex: number;
   ammoCurrent: number;
   ammoMax: number;
 }

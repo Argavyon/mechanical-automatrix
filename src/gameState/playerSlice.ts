@@ -8,9 +8,10 @@ const initialPlayerState = {
   weapons: [
     {
       name: "Fists",
-      attackDamage: 1,
+      damageMin: 1,
+      damageMax: 1,
       attackTime: 0,
-      attackCooldown: 0,
+      attackCooldownTime: 0,
       ammoMax: Infinity,
       ammoCurrent: Infinity,
     },
@@ -24,9 +25,15 @@ export const playerSlice = createSlice({
     setPlayerHealth: (state, action) => {
       state.health.current = action.payload;
     },
+    fireWeapon: (state, action) => {
+      const { weaponIndex, ammo } = action.payload;
+      const weapon = state.weapons[weaponIndex];
+      // weapon.ammoCurrent = ammo;
+      console.log(weapon);
+    },
   },
 });
 
-export const { setPlayerHealth } = playerSlice.actions;
+export const { setPlayerHealth, fireWeapon } = playerSlice.actions;
 
 export default playerSlice.reducer;
