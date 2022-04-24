@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/mechanical-automatrix/static/css/main.04a7fe2a.css",
+    "main.js": "/mechanical-automatrix/static/js/main.81cdd844.js",
+    "index.html": "/mechanical-automatrix/index.html",
+    "main.04a7fe2a.css.map": "/mechanical-automatrix/static/css/main.04a7fe2a.css.map",
+    "main.81cdd844.js.map": "/mechanical-automatrix/static/js/main.81cdd844.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.04a7fe2a.css",
+    "static/js/main.81cdd844.js"
+  ]
+}
