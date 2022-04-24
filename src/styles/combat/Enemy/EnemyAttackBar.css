@@ -1,0 +1,15 @@
+.attackBar {
+  display: flex;
+  align-self: center;
+  /* justify-content: flex-start; */
+  align-items: center;
+  margin: 0 5%;
+  background-color: #515151;
+  width: 25%;
+  height: 5%;
+}
+.innerBar {
+  background-color: rgb(231, 224, 24);
+  width: 1;
+  height: 100%;
+}

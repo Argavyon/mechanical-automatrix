@@ -1,0 +1,14 @@
+.weaponContainer {
+  flex: 1;
+  max-width: "25%";
+  width: "25%";
+  padding: 2%;
+  margin: 2%;
+  border: 1px solid orange;
+  color: white;
+}
+
+.weaponText {
+  text-align: center;
+  margin: 5%;
+}
