@@ -10,7 +10,7 @@ const initialPlayerState: IPlayer = {
     {
       name: "Fists",
       damageMin: 1,
-      damageMax: 1,
+      damageMax: 100,
       attackTime: 0,
       attackCooldownTime: 0,
       ammoMax: Infinity,

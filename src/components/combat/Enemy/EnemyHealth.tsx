@@ -9,9 +9,13 @@ const EnemyHealth: React.FC = () => {
   const healthBar = useRef<HTMLParagraphElement>(null);
 
   useEffect(() => {
-    const healthBarWidth = calculatePercentage(enemyHP.current, enemyHP.max);
+    let healthBarWidth = calculatePercentage(enemyHP.current, enemyHP.max);
+
+    if (enemyHP.current <= 0) {
+      healthBarWidth = 0;
+    }
     healthBar.current!.style.width = `${healthBarWidth}%`;
-  }, [enemyHP.current]);
+  }, [enemyHP]);
 
   return (
     <div className="enemyHealthContainer">

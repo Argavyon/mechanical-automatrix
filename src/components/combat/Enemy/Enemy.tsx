@@ -12,6 +12,17 @@ const Enemy: React.FC<EnemyProps> = (props: EnemyProps) => {
   const enemy = useSelector((state: RootState) => state.enemy);
   const { attackList, currentAttackIndex } = enemy;
 
+  if (enemy.health.current <= 0) {
+    // Enemy is dead
+    return (
+      <div className="enemyContainer">
+        <p className="text next">NEXT</p>
+        <p className="text">{enemy.name}</p>
+        <EnemyHealth />
+      </div>
+    );
+  }
+
   return (
     <div className="enemyContainer">
       <p className="text">{enemy.name}</p>

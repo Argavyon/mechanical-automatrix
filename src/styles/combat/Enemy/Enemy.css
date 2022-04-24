@@ -8,3 +8,9 @@
 .text {
   text-align: center;
 }
+
+.next {
+  border: 1px solid orange;
+  margin: auto;
+  padding: 0.5%;
+}
