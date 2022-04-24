@@ -11,6 +11,9 @@ const PlayerHealth: React.FC = () => {
 
   useEffect(() => {
     healthBar.current!.style.width = `${playerHealth}%`;
+    if (playerHealth <= 0) {
+      healthBar.current!.style.width = `0%`;
+    }
   }, [playerHealth]);
 
   return (

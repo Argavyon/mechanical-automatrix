@@ -10,14 +10,14 @@ const initialEnemyState: IEnemy = {
   attackList: [
     {
       name: "Attack",
-      attackTime: 3,
+      attackTime: 1,
       damageMin: 1,
       damageMax: 5,
       isInterruptable: true,
     },
     {
       name: "Attack 2",
-      attackTime: 5,
+      attackTime: 1,
       damageMin: 10,
       damageMax: 50,
       isInterruptable: true,

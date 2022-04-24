@@ -23,7 +23,7 @@ const EnemyAttackBar: React.FC<IAttackBarProps> = (props: IAttackBarProps) => {
   const barElement = useRef<HTMLParagraphElement>(null);
 
   useEffect((): void => {
-    setTimeout((): void => {
+    const attack = setTimeout((): void => {
       if (enemy.attackBar.current < enemy.attackBar.max) {
         dispatch(setAttackBar(enemy.attackBar.current + 1));
         barElement.current!.style.width = `${enemy.attackBar.current + 1}%`;
@@ -42,6 +42,13 @@ const EnemyAttackBar: React.FC<IAttackBarProps> = (props: IAttackBarProps) => {
         dispatch(getNextAttack());
       }
     }, timePerBarIncrease);
+
+    if (playerHP.current <= 0) {
+      // Player is dead.
+      clearTimeout(attack);
+      dispatch(setAttackBar(0));
+      barElement.current!.style.width = `0%`;
+    }
   }, [enemy.attackBar.current]);
 
   return (
