@@ -16,7 +16,7 @@ const initialEnemyState: IEnemy = {
       isInterruptable: true,
     },
     {
-      name: "Attack",
+      name: "Attack 2",
       attackTime: 10,
       damageMin: 10,
       damageMax: 50,

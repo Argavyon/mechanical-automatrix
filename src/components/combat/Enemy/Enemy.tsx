@@ -16,6 +16,7 @@ const Enemy: React.FC<EnemyProps> = (props: EnemyProps) => {
     <div className="enemyContainer">
       <p className="text">{enemy.name}</p>
       <EnemyHealth />
+      <p className="text">{attackList[currentAttackIndex].name}</p>
       <EnemyAttackBar
         attackTime={attackList[currentAttackIndex].attackTime}
         attackDamage={random(
