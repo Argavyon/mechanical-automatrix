@@ -1,14 +1,18 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import IPlayer from "types/PlayerTypes";
+import { IResource } from "types/ResourceTypes";
 
 import "./App.css";
 import CombatScreen from "./components/combat/CombatScreen";
 
 const App: React.FC = () => {
-  const player = useSelector((state: any) => state.player);
+  const player: IPlayer = useSelector((state: any) => state.player);
+  const resource: IResource = useSelector((state: any) => state.resource);
+  const dispatch = useDispatch();
 
   if (player.isInCombat === false) {
-    return <div>Loading...</div>;
+    return <div></div>;
   }
 
   return (
