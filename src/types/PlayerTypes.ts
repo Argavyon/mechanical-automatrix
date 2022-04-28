@@ -6,6 +6,7 @@ interface IPlayer {
     current: number;
   };
   weapons: IPlayerWeapon[];
+  isInCombat: boolean;
 }
 
 export default IPlayer;

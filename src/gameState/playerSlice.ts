@@ -17,6 +17,7 @@ const initialPlayerState: IPlayer = {
       ammoCurrent: Infinity,
     },
   ],
+  isInCombat: false,
 };
 
 export const playerSlice = createSlice({
@@ -29,6 +30,9 @@ export const playerSlice = createSlice({
     fireWeapon: (state, action) => {
       const { index } = action.payload;
       state.weapons[index].ammoCurrent--;
+    },
+    setPlayerInCombat: (state, action) => {
+      state.isInCombat = action.payload;
     },
   },
 });
