@@ -10,7 +10,7 @@ const Resource = (props: IResource) => {
     <div className="resourceContainer">
       <div className="resourceHeader">
         <p className="resourceName">{props.name}</p>
-        <Bar value={props.amountCurrent} />
+        <Bar value={props.amountCurrent} color={"whitesmoke"} />
       </div>
       <div className="resourceButtonsContainer">
         <ResourceButton

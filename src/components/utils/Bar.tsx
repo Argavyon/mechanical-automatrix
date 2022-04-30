@@ -3,6 +3,7 @@ import "styles/utils/Bar.css";
 
 type BarProps = {
   value: number;
+  color: string;
 };
 
 const Bar: React.FC<BarProps> = (props: BarProps) => {
@@ -17,8 +18,12 @@ const Bar: React.FC<BarProps> = (props: BarProps) => {
 
   return (
     <div className="barContainer">
-      <p className="innerBar" ref={barRef}>
-        {props.value}
+      <p
+        style={{ backgroundColor: props.color }}
+        className="innerBar"
+        ref={barRef}
+      >
+        {/* {props.value} */}
       </p>
     </div>
   );
