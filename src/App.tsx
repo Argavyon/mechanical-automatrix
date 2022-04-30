@@ -1,6 +1,6 @@
-import Resource from "components/nonCombat/resources/Resource";
+import ResourceScreen from "components/nonCombat/resources/ResourceScreen";
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import IPlayer from "types/PlayerTypes";
 import { IResource } from "types/ResourceTypes";
 
@@ -14,17 +14,7 @@ const App: React.FC = () => {
   if (player.isInCombat === false) {
     return (
       <div className="container">
-        <Resource
-          name="Heat"
-          costPerItem={{ resource: "heat", amount: 0 }}
-          timeToMake={10}
-          timeToMakeCostToImprove={{ resource: "heat", amount: 2 }}
-          amountCurrent={5}
-          amountMax={10}
-          amountMaxCostToImprove={{ resource: "heat", amount: 2 }}
-          improvementCostExponent={1.5}
-          isUnlocked={true}
-        />
+        <ResourceScreen />
       </div>
     );
   }

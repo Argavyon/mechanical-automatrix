@@ -1,7 +1,7 @@
 import React from "react";
 import { IResource } from "types/ResourceTypes";
 
-import "styles/nonCombat/Resource.css";
+import "styles/nonCombat/resources/Resource.css";
 import ResourceButton from "./ResourceButton";
 import Bar from "components/utils/Bar";
 
