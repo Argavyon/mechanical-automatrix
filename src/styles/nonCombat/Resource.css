@@ -6,6 +6,11 @@
   flex-direction: column;
 }
 
+.resourceHeader {
+  display: flex;
+  flex-direction: row;
+}
+
 .resourceButtonsContainer {
   display: flex;
   /* flex-direction: row; */
@@ -13,7 +18,6 @@
 
 .resourceButton {
   flex: 1;
-  justify-content: center;
-  /* flex-direction: row; */
+  text-align: center;
   /* background-color: red; */
 }

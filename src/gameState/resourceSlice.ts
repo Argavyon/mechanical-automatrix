@@ -2,13 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 import { IResource } from "types/ResourceTypes";
 
 const initialResourceState: IResource = {
-  name: "",
-  costPerItem: { resource: "", amount: 0 },
+  name: "Heat",
+  costPerItem: { resource: "Heat", amount: 0 },
   timeToMake: 5,
-  timeToMakeCostToImprove: { resource: "", amount: 5 },
+  timeToMakeCostToImprove: { resource: "Heat", amount: 5 },
   amountCurrent: 0,
   amountMax: 10,
-  amountMaxCostToImprove: { resource: "", amount: 0 },
+  amountMaxCostToImprove: { resource: "Heat", amount: 0 },
   improvementCostExponent: 1.5,
   isUnlocked: true,
 };

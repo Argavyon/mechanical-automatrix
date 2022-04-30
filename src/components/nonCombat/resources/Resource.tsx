@@ -3,12 +3,14 @@ import { IResource } from "types/ResourceTypes";
 
 import "styles/nonCombat/Resource.css";
 import ResourceButton from "./ResourceButton";
+import Bar from "components/utils/Bar";
 
 const Resource = (props: IResource) => {
   return (
     <div className="resourceContainer">
-      <div>
+      <div className="resourceHeader">
         <p className="resourceName">{props.name}</p>
+        <Bar value={props.amountCurrent} />
       </div>
       <div className="resourceButtonsContainer">
         <ResourceButton
