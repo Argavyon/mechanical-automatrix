@@ -1,6 +1,5 @@
 .resourceContainer {
   display: flex;
-  /* flex: 1; */
   background-color: grey;
   color: white;
   flex-direction: column;
@@ -13,11 +12,9 @@
 
 .resourceButtonsContainer {
   display: flex;
-  /* flex-direction: row; */
 }
 
 .resourceButton {
   flex: 1;
   text-align: center;
-  /* background-color: red; */
 }
