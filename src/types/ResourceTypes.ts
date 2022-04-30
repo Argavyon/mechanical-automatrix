@@ -10,8 +10,8 @@ export interface IResource {
   isUnlocked: boolean;
 }
 
-interface IResourceCost {
-  // Should probably be an enum
+export interface IResourceCost {
+  // Resource should probably be an enum
   resource: string;
   amount: number;
 }
