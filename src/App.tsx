@@ -19,7 +19,7 @@ const App: React.FC = () => {
           costPerItem={{ resource: "heat", amount: 0 }}
           timeToMake={10}
           timeToMakeCostToImprove={{ resource: "heat", amount: 2 }}
-          amountCurrent={3}
+          amountCurrent={5}
           amountMax={10}
           amountMaxCostToImprove={{ resource: "heat", amount: 2 }}
           improvementCostExponent={1.5}

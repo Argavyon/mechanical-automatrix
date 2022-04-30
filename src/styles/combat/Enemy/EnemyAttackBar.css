@@ -1,4 +1,4 @@
-.attackBar {
+.enemyAttackBar {
   display: flex;
   align-self: center;
   /* justify-content: flex-start; */
@@ -8,7 +8,7 @@
   width: 25%;
   height: 5%;
 }
-.innerBar {
+.enemyAttackBar > .innerEnemyAttackBar {
   background-color: rgb(231, 224, 24);
   width: 1;
   height: 100%;
