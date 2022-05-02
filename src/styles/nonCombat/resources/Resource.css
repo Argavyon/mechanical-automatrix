@@ -8,13 +8,36 @@
 .resourceHeader {
   display: flex;
   flex-direction: row;
+  align-items: center;
+}
+
+.resourceName {
+  margin: auto;
+  padding: 0.5%;
+  outline: #969696 solid 3px;
+  transition: box-shadow 0.25s;
+  background-color: #d4d4d4;
+  color: black;
+}
+.resourceName:hover,
+.resourceButton:hover {
+  box-shadow: 0 0 10px 5px rgb(158, 158, 158);
 }
 
 .resourceButtonsContainer {
   display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  color: black;
 }
 
 .resourceButton {
-  flex: 1;
-  text-align: center;
+  background-color: #d4d4d4;
+  outline: #969696 solid 2px;
+  padding: 1%;
+  transition: box-shadow 0.25s;
+}
+
+.alignLeft {
+  text-align: left;
 }

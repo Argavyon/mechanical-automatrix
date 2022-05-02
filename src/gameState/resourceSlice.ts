@@ -6,9 +6,11 @@ const initialResourceState: IResource = {
   costPerItem: { resource: "Heat", amount: 0 },
   timeToMake: 5,
   timeToMakeCostToImprove: { resource: "Heat", amount: 5 },
+  timeToMakeLevel: 1,
   amountCurrent: 0,
   amountMax: 10,
   amountMaxCostToImprove: { resource: "Heat", amount: 0 },
+  amountMaxLevel: 10,
   improvementCostExponent: 1.5,
   isUnlocked: true,
 };

@@ -20,10 +20,12 @@ const Resource = (props: IResource) => {
         <ResourceButton
           buttonName="Job speed"
           cost={{ resource: "heat", amount: 1 }}
+          level={props.timeToMakeLevel}
         />
         <ResourceButton
           buttonName="Capacity"
           cost={{ resource: "heat", amount: 1 }}
+          level={props.amountMaxLevel}
         />
       </div>
     </div>

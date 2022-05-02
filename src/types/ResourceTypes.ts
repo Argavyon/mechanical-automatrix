@@ -3,9 +3,11 @@ export interface IResource {
   costPerItem: IResourceCost;
   timeToMake: number;
   timeToMakeCostToImprove: IResourceCost;
+  timeToMakeLevel: number;
   amountCurrent: number;
   amountMax: number;
   amountMaxCostToImprove: IResourceCost;
+  amountMaxLevel: number;
   improvementCostExponent: number;
   isUnlocked: boolean;
 }
