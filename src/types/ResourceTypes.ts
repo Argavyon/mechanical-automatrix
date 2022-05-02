@@ -1,3 +1,8 @@
+export interface IResourcesState {
+  // Resource names should be lowercase
+  heat: IResource;
+}
+
 export interface IResource {
   name: string;
   costPerItem: IResourceCost;
