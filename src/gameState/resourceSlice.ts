@@ -25,43 +25,52 @@ export const resourceSlice = createSlice({
     // setTimeToMake can imply a change with a specified value, when it is
     // actually calculated based on the current value and the improvement cost exponent.
 
-    setTimeToMake: (state, payload) => {
-      console.log(payload.payload);
+    improveTimeToMake: (state, action) => {
+      console.log(action.payload);
 
-      const index: keyof IResourcesState = payload.payload;
+      const index: keyof IResourcesState = action.payload;
 
       // FIXME: This is increasing the time to make, but it should be decreasing it.
       // Fix the math.
+      // New time =  old time / (1.025 ** improvementCostExponent)
       state[index].timeToMake =
-        state[index].timeToMake * state[index].improvementCostExponent;
+        state[index].timeToMake / 1.025 ** state[index].improvementCostExponent;
     },
-    // setTimeToMakeCostToImprove: (state) => {
-    //   state.timeToMakeCostToImprove.amount =
-    //     state.timeToMakeCostToImprove.amount * state.improvementCostExponent;
-    // },
-    // setAmountMax: (state) => {
-    //   state.amountMax = state.amountMax * state.improvementCostExponent;
-    // },
-    // setAmountMaxCostToImprove: (state) => {
-    //   state.amountMaxCostToImprove.amount =
-    //     state.amountMaxCostToImprove.amount * state.improvementCostExponent;
-    // },
-    // setImprovementCostExponent: (state, action) => {
-    //   state.improvementCostExponent = action.payload;
-    // },
-    // setIsUnlocked: (state, action) => {
-    //   state.isUnlocked = action.payload;
-    // },
+    setTimeToMakeCostToImprove: (state, action) => {
+      const index: keyof IResourcesState = action.payload;
+
+      state[index].timeToMakeCostToImprove.amount =
+        state[index].timeToMakeCostToImprove.amount *
+        state[index].improvementCostExponent;
+    },
+    setAmountMax: (state, action) => {
+      const index: keyof IResourcesState = action.payload;
+
+      state[index].amountMax =
+        state[index].amountMax * state[index].improvementCostExponent;
+    },
+    setAmountMaxCostToImprove: (state, action) => {
+      const index: keyof IResourcesState = action.payload;
+
+      state[index].amountMaxCostToImprove.amount =
+        state[index].amountMaxCostToImprove.amount *
+        state[index].improvementCostExponent;
+    },
+
+    setIsUnlocked: (state, action) => {
+      const index: keyof IResourcesState = action.payload;
+
+      state[index].isUnlocked = action.payload;
+    },
   },
 });
 
 export const {
-  setTimeToMake,
-  // setTimeToMakeCostToImprove,
-  // setAmountMax,
-  // setAmountMaxCostToImprove,
-  // setImprovementCostExponent,
-  // setIsUnlocked,
+  improveTimeToMake,
+  setTimeToMakeCostToImprove,
+  setAmountMax,
+  setAmountMaxCostToImprove,
+  setIsUnlocked,
 } = resourceSlice.actions;
 
 export default resourceSlice.reducer;

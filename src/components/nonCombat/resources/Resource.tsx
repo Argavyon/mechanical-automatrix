@@ -6,7 +6,7 @@ import ResourceButton from "./ResourceButton";
 import Bar from "components/utils/Bar";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "gameState/store";
-import { setTimeToMake } from "gameState/resourceSlice";
+import { improveTimeToMake } from "gameState/resourceSlice";
 
 const Resource = (props: IResource) => {
   // The name prop has to be defined as a keyof IResourcesState or typescript
@@ -24,7 +24,7 @@ const Resource = (props: IResource) => {
     <div className="resourceContainer">
       <div className="resourceHeader">
         <p
-          onClick={() => dispatch(setTimeToMake("heat"))}
+          onClick={() => dispatch(improveTimeToMake("heat"))}
           className="resourceName"
         >
           {props.name}
