@@ -24,7 +24,7 @@ const Resource = (props: IResource) => {
     <div className="resourceContainer">
       <div className="resourceHeader">
         <p
-          onClick={() => dispatch(improveTimeToMake("heat"))}
+          onClick={() => dispatch(improveTimeToMake(props.name))}
           className="resourceName"
         >
           {props.name}

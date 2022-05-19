@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import { IResource, IResourcesState } from "types/ResourceTypes";
 
 const initialResourceState: IResourcesState = {
-  heat: {
+  Heat: {
     name: "Heat",
     costPerItem: { resource: "Heat", amount: 0 },
     timeToMake: 5,
@@ -12,10 +12,10 @@ const initialResourceState: IResourcesState = {
     amountMax: 10,
     amountMaxCostToImprove: { resource: "Tanks", amount: 5 },
     amountMaxLevel: 10,
-    improvementCostExponent: 1.5,
+    improvementCostExponent: 2.5,
     isUnlocked: true,
   },
-  tanks: {
+  Tanks: {
     name: "Tanks",
     costPerItem: { resource: "Heat", amount: 3 },
     timeToMake: 5,
@@ -42,6 +42,8 @@ export const resourceSlice = createSlice({
       console.log(action.payload);
 
       const index: keyof IResourcesState = action.payload;
+      console.log(index);
+      console.log(state[index].timeToMake);
 
       // FIXME: This is increasing the time to make, but it should be decreasing it.
       // Fix the math.

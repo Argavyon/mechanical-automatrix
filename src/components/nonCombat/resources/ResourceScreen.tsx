@@ -13,13 +13,7 @@ const ResourceScreen = (props: Props) => {
 
   for (let resource in resources) {
     const resourceState = resources[resource as keyof typeof resources];
-    //   console.log(resourceState);
-
     resourceArray.push(resourceState);
-
-    // for (let key in resourceState) {
-    //   console.log(resourceState[key as keyof typeof resourceState]);
-    // }
   }
 
   return (
