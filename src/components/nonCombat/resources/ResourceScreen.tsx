@@ -18,22 +18,24 @@ const ResourceScreen = (props: Props) => {
 
   return (
     <div>
-      {resourceArray.map((resource) => (
-        <Resource
-          key={resource.name}
-          name={resource.name}
-          costPerItem={resource.costPerItem}
-          timeToMake={resource.timeToMake}
-          timeToMakeCostToImprove={resource.timeToMakeCostToImprove}
-          timeToMakeLevel={resource.timeToMakeLevel}
-          amountCurrent={resource.amountCurrent}
-          amountMax={resource.amountMax}
-          amountMaxLevel={resource.amountMaxLevel}
-          amountMaxCostToImprove={resource.amountMaxCostToImprove}
-          improvementCostExponent={resource.improvementCostExponent}
-          isUnlocked={resource.isUnlocked}
-        />
-      ))}
+      {resourceArray
+        .filter((resource) => resource.isUnlocked)
+        .map((resource) => (
+          <Resource
+            key={resource.name}
+            name={resource.name}
+            costPerItem={resource.costPerItem}
+            timeToMake={resource.timeToMake}
+            timeToMakeCostToImprove={resource.timeToMakeCostToImprove}
+            timeToMakeLevel={resource.timeToMakeLevel}
+            amountCurrent={resource.amountCurrent}
+            amountMax={resource.amountMax}
+            amountMaxLevel={resource.amountMaxLevel}
+            amountMaxCostToImprove={resource.amountMaxCostToImprove}
+            improvementCostExponent={resource.improvementCostExponent}
+            isUnlocked={resource.isUnlocked}
+          />
+        ))}
     </div>
   );
 };
