@@ -1,6 +1,7 @@
 export interface IResourcesState {
   // Resource names should be lowercase
   heat: IResource;
+  tanks: IResource;
 }
 
 export interface IResource {

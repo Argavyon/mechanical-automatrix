@@ -7,7 +7,7 @@ const store = configureStore({
   reducer: {
     player: playerReducer,
     enemy: enemyReducer,
-    resource: resourceReducer,
+    resources: resourceReducer,
   },
 });
 

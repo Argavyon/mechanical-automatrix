@@ -13,12 +13,12 @@ const Resource = (props: IResource) => {
   // will burn everything to the ground.
   const resourceState = useSelector(
     (state: RootState) =>
-      state.resource[props.name.toLowerCase() as keyof IResourcesState]
+      state.resources[props.name.toLowerCase() as keyof IResourcesState]
   );
 
   const dispatch = useDispatch();
 
-  console.log(resourceState);
+  // console.log(resourceState);
 
   return (
     <div className="resourceContainer">
