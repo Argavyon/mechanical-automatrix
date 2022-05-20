@@ -42,13 +42,13 @@ const Resource = (props: IResource) => {
         <ResourceButton
           onclick={() => dispatch(improveTimeToMake(props.name))}
           buttonName="Job speed"
-          cost={{ resource: "heat", amount: 1 }}
+          cost={props.timeToMakeCostToImprove}
           level={props.timeToMakeLevel}
         />
         <ResourceButton
           onclick={() => dispatch(improveAmountMax(props.name))}
           buttonName="Capacity"
-          cost={{ resource: "heat", amount: 1 }}
+          cost={props.amountMaxCostToImprove}
           level={props.amountMaxLevel}
         />
       </div>

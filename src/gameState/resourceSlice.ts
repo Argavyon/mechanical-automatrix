@@ -1,5 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IResource, IResourcesState } from "types/ResourceTypes";
+import { getNewValues, canAffordCost } from "../utils/resourceImprovements";
+
+export const BASE_MODIFIER = 1.025;
 
 const initialResourceState: IResourcesState = {
   Heat: {
@@ -11,7 +14,7 @@ const initialResourceState: IResourcesState = {
     amountCurrent: 0,
     amountMax: 10,
     amountMaxCostToImprove: { resource: "Tanks", amount: 5 },
-    amountMaxLevel: 10,
+    amountMaxLevel: 1,
     improvementCostExponent: 2.5,
     isUnlocked: true,
   },
@@ -24,7 +27,7 @@ const initialResourceState: IResourcesState = {
     amountCurrent: 0,
     amountMax: 10,
     amountMaxCostToImprove: { resource: "Tanks", amount: 7 },
-    amountMaxLevel: 10,
+    amountMaxLevel: 1,
     improvementCostExponent: 1.5,
     isUnlocked: true,
   },
@@ -42,37 +45,36 @@ export const resourceSlice = createSlice({
       }
     },
     improveTimeToMake: (state, action) => {
-      console.log(action.payload);
-
       const index: keyof IResourcesState = action.payload;
-      console.log(index);
-      console.log(state[index].timeToMake);
+      const resourceNeeded = state[index].timeToMakeCostToImprove.resource;
+      const amountNeeded =
+        state[resourceNeeded as keyof IResourcesState].amountCurrent;
 
-      // FIXME: This is increasing the time to make, but it should be decreasing it.
-      // Fix the math.
-      // New time =  old time / (1.025 ** improvementCostExponent)
-      state[index].timeToMake =
-        state[index].timeToMake / 1.025 ** state[index].improvementCostExponent;
-    },
-    setTimeToMakeCostToImprove: (state, action) => {
-      const index: keyof IResourcesState = action.payload;
+      if (
+        canAffordCost(state[index].timeToMakeCostToImprove, amountNeeded) ===
+        false
+      ) {
+        return;
+      }
 
-      state[index].timeToMakeCostToImprove.amount =
-        state[index].timeToMakeCostToImprove.amount *
-        state[index].improvementCostExponent;
+      const { newParameterValue, newCost } = getNewValues(
+        state,
+        index,
+        state[index].timeToMake,
+        state[index].timeToMakeCostToImprove.amount
+      );
+
+      state[resourceNeeded as keyof IResourcesState].amountCurrent -=
+        amountNeeded;
+      state[index].timeToMake = newParameterValue;
+      state[index].timeToMakeCostToImprove.amount = newCost;
     },
+
     improveAmountMax: (state, action) => {
       const index: keyof IResourcesState = action.payload;
 
       state[index].amountMax =
         state[index].amountMax * state[index].improvementCostExponent;
-    },
-    setAmountMaxCostToImprove: (state, action) => {
-      const index: keyof IResourcesState = action.payload;
-
-      state[index].amountMaxCostToImprove.amount =
-        state[index].amountMaxCostToImprove.amount *
-        state[index].improvementCostExponent;
     },
 
     setIsUnlocked: (state, action) => {
@@ -86,9 +88,7 @@ export const resourceSlice = createSlice({
 export const {
   makeResource,
   improveTimeToMake,
-  setTimeToMakeCostToImprove,
   improveAmountMax,
-  setAmountMaxCostToImprove,
   setIsUnlocked,
 } = resourceSlice.actions;
 
