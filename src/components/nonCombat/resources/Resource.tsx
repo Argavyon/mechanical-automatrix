@@ -6,14 +6,17 @@ import ResourceButton from "./ResourceButton";
 import Bar from "components/utils/Bar";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "gameState/store";
-import { improveTimeToMake } from "gameState/resourceSlice";
+import {
+  improveTimeToMake,
+  improveAmountMax,
+  makeResource,
+} from "gameState/resourceSlice";
 
 const Resource = (props: IResource) => {
   // The name prop has to be defined as a keyof IResourcesState or typescript
   // will burn everything to the ground.
   const resourceState = useSelector(
-    (state: RootState) =>
-      state.resources[props.name.toLowerCase() as keyof IResourcesState]
+    (state: RootState) => state.resources[props.name as keyof IResourcesState]
   );
 
   const dispatch = useDispatch();
@@ -24,8 +27,8 @@ const Resource = (props: IResource) => {
     <div className="resourceContainer">
       <div className="resourceHeader">
         <p
-          onClick={() => dispatch(improveTimeToMake(props.name))}
           className="resourceName"
+          onClick={() => dispatch(makeResource(props.name))}
         >
           {props.name}
         </p>
@@ -37,11 +40,13 @@ const Resource = (props: IResource) => {
       </div>
       <div className="resourceButtonsContainer">
         <ResourceButton
+          onclick={() => dispatch(improveTimeToMake(props.name))}
           buttonName="Job speed"
           cost={{ resource: "heat", amount: 1 }}
           level={props.timeToMakeLevel}
         />
         <ResourceButton
+          onclick={() => dispatch(improveAmountMax(props.name))}
           buttonName="Capacity"
           cost={{ resource: "heat", amount: 1 }}
           level={props.amountMaxLevel}

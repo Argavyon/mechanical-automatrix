@@ -34,10 +34,13 @@ export const resourceSlice = createSlice({
   name: "resource",
   initialState: initialResourceState,
   reducers: {
-    // TODO: Rename the reducer to something else.
-    // setTimeToMake can imply a change with a specified value, when it is
-    // actually calculated based on the current value and the improvement cost exponent.
+    makeResource: (state, action) => {
+      const index: keyof IResourcesState = action.payload;
 
+      if (state[index].amountCurrent < state[index].amountMax) {
+        state[index].amountCurrent++;
+      }
+    },
     improveTimeToMake: (state, action) => {
       console.log(action.payload);
 
@@ -58,7 +61,7 @@ export const resourceSlice = createSlice({
         state[index].timeToMakeCostToImprove.amount *
         state[index].improvementCostExponent;
     },
-    setAmountMax: (state, action) => {
+    improveAmountMax: (state, action) => {
       const index: keyof IResourcesState = action.payload;
 
       state[index].amountMax =
@@ -81,9 +84,10 @@ export const resourceSlice = createSlice({
 });
 
 export const {
+  makeResource,
   improveTimeToMake,
   setTimeToMakeCostToImprove,
-  setAmountMax,
+  improveAmountMax,
   setAmountMaxCostToImprove,
   setIsUnlocked,
 } = resourceSlice.actions;
