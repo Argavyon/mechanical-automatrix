@@ -32,6 +32,7 @@ const Resource = (props: IResource) => {
           value={props.amountCurrent}
           max={props.amountMax}
           color={"whitesmoke"}
+          textColor={"black"}
         />
       </div>
       <div className="resourceButtonsContainer">

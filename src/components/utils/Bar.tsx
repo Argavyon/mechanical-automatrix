@@ -6,6 +6,7 @@ type BarProps = {
   value: number;
   max: number;
   color: string;
+  textColor?: string;
 };
 
 const Bar: React.FC<BarProps> = (props: BarProps) => {
@@ -24,7 +25,7 @@ const Bar: React.FC<BarProps> = (props: BarProps) => {
   return (
     <div className="barContainer">
       <p
-        style={{ backgroundColor: props.color }}
+        style={{ backgroundColor: props.color, color: props.textColor }}
         className="innerBar"
         ref={barRef}
       >
