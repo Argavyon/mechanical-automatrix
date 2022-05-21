@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { IResource, IResourcesState } from "types/ResourceTypes";
+import { IResource, IResourceCost, IResourcesState } from "types/ResourceTypes";
 import { getNewValues, canAffordCost } from "../utils/resourceImprovements";
 
-export const BASE_MODIFIER = 1.025;
+export const BASE_MODIFIER = 1.2;
 
 const initialResourceState: IResourcesState = {
   Heat: {
@@ -28,7 +28,7 @@ const initialResourceState: IResourcesState = {
     amountMax: 10,
     amountMaxCostToImprove: { resource: "Tanks", amount: 7 },
     amountMaxLevel: 1,
-    improvementCostExponent: 1.5,
+    improvementCostExponent: 2,
     isUnlocked: true,
   },
 };
@@ -44,37 +44,34 @@ export const resourceSlice = createSlice({
         state[index].amountCurrent++;
       }
     },
-    improveTimeToMake: (state, action) => {
-      const index: keyof IResourcesState = action.payload;
-      const resourceNeeded = state[index].timeToMakeCostToImprove.resource;
-      const amountNeeded =
-        state[resourceNeeded as keyof IResourcesState].amountCurrent;
+    improveParameter: (state, action) => {
+      const name: keyof IResourcesState = action.payload.name;
+      const parameter: keyof IResource = action.payload.parameter;
+      const cost: keyof IResource = action.payload.cost;
 
-      if (
-        canAffordCost(state[index].timeToMakeCostToImprove, amountNeeded) ===
-        false
-      ) {
+      const parameterValue: number = state[name][parameter] as number;
+      const costObject: IResourceCost = state[name][cost] as IResourceCost;
+
+      const resourceNeeded = costObject.resource as keyof IResourcesState;
+      const amountAvailable = state[resourceNeeded].amountCurrent;
+
+      if (canAffordCost(costObject, amountAvailable) === false) {
         return;
       }
 
       const { newParameterValue, newCost } = getNewValues(
         state,
-        index,
-        state[index].timeToMake,
-        state[index].timeToMakeCostToImprove.amount
+        name,
+        parameterValue,
+        costObject.amount,
+        action.payload.action
       );
 
-      state[resourceNeeded as keyof IResourcesState].amountCurrent -=
-        amountNeeded;
-      state[index].timeToMake = newParameterValue;
-      state[index].timeToMakeCostToImprove.amount = newCost;
-    },
+      state[resourceNeeded].amountCurrent -= costObject.amount;
 
-    improveAmountMax: (state, action) => {
-      const index: keyof IResourcesState = action.payload;
-
-      state[index].amountMax =
-        state[index].amountMax * state[index].improvementCostExponent;
+      (state[name][parameter as keyof IResource] as number) = newParameterValue;
+      (state[name][cost as keyof IResource] as IResourceCost).amount = newCost;
+      console.log(state[name][parameter]);
     },
 
     setIsUnlocked: (state, action) => {
@@ -85,11 +82,7 @@ export const resourceSlice = createSlice({
   },
 });
 
-export const {
-  makeResource,
-  improveTimeToMake,
-  improveAmountMax,
-  setIsUnlocked,
-} = resourceSlice.actions;
+export const { makeResource, improveParameter, setIsUnlocked } =
+  resourceSlice.actions;
 
 export default resourceSlice.reducer;
