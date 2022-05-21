@@ -20,7 +20,7 @@ const initialResourceState: IResourcesState = {
   },
   Tanks: {
     name: "Tanks",
-    costPerItem: { resource: "Heat", amount: 3 },
+    costPerItem: { resource: "Heat", amount: 1 },
     timeToMake: 5,
     timeToMakeCostToImprove: { resource: "Heat", amount: 5 },
     timeToMakeLevel: 1,
@@ -40,8 +40,22 @@ export const resourceSlice = createSlice({
     makeResource: (state, action) => {
       const index: keyof IResourcesState = action.payload;
 
+      // This code is duplicated below.
+      // Refactoring is warrented.
+      const costObject: IResourceCost = state[index]
+        .costPerItem as IResourceCost;
+
+      const resourceNeeded = costObject.resource as keyof IResourcesState;
+      const amountAvailable = state[resourceNeeded].amountCurrent;
+
+      if (canAffordCost(costObject, amountAvailable) === false) {
+        return;
+      }
+      // End of duplication.
+
       if (state[index].amountCurrent < state[index].amountMax) {
         state[index].amountCurrent++;
+        state[resourceNeeded].amountCurrent -= costObject.amount;
       }
     },
     improveParameter: (state, action) => {
