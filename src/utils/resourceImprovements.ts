@@ -26,12 +26,9 @@ const getNewValues = (
   }
 
   newParameterValue = Math.ceil(newParameterValue);
-  // toFixed converts the number to String, so we convert it back to number.
-  const newCost = Number(
-    (
-      parameterCost *
-      BASE_MODIFIER ** state[index].improvementCostExponent
-    ).toFixed(2)
+
+  const newCost = Math.round(
+    parameterCost * BASE_MODIFIER ** state[index].improvementCostExponent
   );
 
   return { newParameterValue, newCost };
