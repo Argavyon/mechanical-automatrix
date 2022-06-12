@@ -52,8 +52,8 @@ const EnemyAttackBar: React.FC<IAttackBarProps> = (props: IAttackBarProps) => {
   }, [enemy.attackBar.current]);
 
   return (
-    <div className="attackBar">
-      <p className="innerBar" ref={barElement}></p>
+    <div className="enemyAttackBar">
+      <p className="innerEnemyAttackBar" ref={barElement}></p>
     </div>
   );
 };
