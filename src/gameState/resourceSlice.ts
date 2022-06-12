@@ -8,7 +8,7 @@ const initialResourceState: IResourcesState = {
   Heat: {
     name: "Heat",
     costPerItem: { resource: "Heat", amount: 0 },
-    timeToMake: 5,
+    timeToMake: 2,
     timeToMakeCostToImprove: { resource: "Heat", amount: 5 },
     timeToMakeLevel: 1,
     amountCurrent: 0,
@@ -17,6 +17,7 @@ const initialResourceState: IResourcesState = {
     amountMaxLevel: 1,
     improvementCostExponent: 2.5,
     isUnlocked: true,
+    isBeingMade: false,
   },
   Tanks: {
     name: "Tanks",
@@ -30,6 +31,7 @@ const initialResourceState: IResourcesState = {
     amountMaxLevel: 1,
     improvementCostExponent: 2,
     isUnlocked: true,
+    isBeingMade: false,
   },
 };
 
@@ -93,10 +95,15 @@ export const resourceSlice = createSlice({
 
       state[index].isUnlocked = action.payload;
     },
+    setIsBeingMade: (state, action) => {
+      const index: keyof IResourcesState = action.payload.name;
+
+      state[index].isBeingMade = action.payload.isBeingMade;
+    },
   },
 });
 
-export const { makeResource, improveParameter, setIsUnlocked } =
+export const { makeResource, improveParameter, setIsUnlocked, setIsBeingMade } =
   resourceSlice.actions;
 
 export default resourceSlice.reducer;

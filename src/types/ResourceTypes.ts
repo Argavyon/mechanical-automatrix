@@ -16,6 +16,7 @@ export interface IResource {
   amountMaxLevel: number;
   improvementCostExponent: number;
   isUnlocked: boolean;
+  isBeingMade: boolean;
 }
 
 export interface IResourceCost {

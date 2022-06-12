@@ -1,40 +1,22 @@
 import React from "react";
-import { IResource, IResourcesState } from "types/ResourceTypes";
-
+import { IResource } from "types/ResourceTypes";
 import "styles/nonCombat/resources/Resource.css";
 import ResourceButton from "./ResourceButton";
-import Bar from "components/utils/Bar";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "gameState/store";
-import { improveParameter, makeResource } from "gameState/resourceSlice";
+import { useDispatch } from "react-redux";
+import { improveParameter } from "gameState/resourceSlice";
+import { ResourceHeader } from "./ResourceHeader";
 
 const Resource = (props: IResource) => {
-  // The name prop has to be defined as a keyof IResourcesState or typescript
-  // will burn everything to the ground.
-  const resourceState = useSelector(
-    (state: RootState) => state.resources[props.name as keyof IResourcesState]
-  );
-
   const dispatch = useDispatch();
-
-  // console.log(resourceState);
 
   return (
     <div className="resourceContainer">
-      <div className="resourceHeader">
-        <p
-          className="resourceName"
-          onClick={() => dispatch(makeResource(props.name))}
-        >
-          {props.name}
-        </p>
-        <Bar
-          value={props.amountCurrent}
-          max={props.amountMax}
-          color={"whitesmoke"}
-          textColor={"black"}
-        />
-      </div>
+      <ResourceHeader
+        name={props.name}
+        amountCurrent={props.amountCurrent}
+        amountMax={props.amountMax}
+        timeToMake={props.timeToMake}
+      ></ResourceHeader>
       <div className="resourceButtonsContainer">
         <ResourceButton
           onclick={() =>

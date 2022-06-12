@@ -5,9 +5,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "gameState/store";
 import { IResource } from "types/ResourceTypes";
 
-type Props = {};
-
-const ResourceScreen = (props: Props) => {
+const ResourceScreen = () => {
   const resources = useSelector((state: RootState) => state.resources);
   let resourceArray: IResource[] = [];
 
@@ -34,6 +32,7 @@ const ResourceScreen = (props: Props) => {
             amountMaxCostToImprove={resource.amountMaxCostToImprove}
             improvementCostExponent={resource.improvementCostExponent}
             isUnlocked={resource.isUnlocked}
+            isBeingMade={resource.isBeingMade}
           />
         ))}
     </div>
