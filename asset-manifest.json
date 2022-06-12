@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/mechanical-automatrix/static/css/main.04a7fe2a.css",
-    "main.js": "/mechanical-automatrix/static/js/main.81cdd844.js",
+    "main.css": "/mechanical-automatrix/static/css/main.3bc74f85.css",
+    "main.js": "/mechanical-automatrix/static/js/main.6dc969d1.js",
     "index.html": "/mechanical-automatrix/index.html",
-    "main.04a7fe2a.css.map": "/mechanical-automatrix/static/css/main.04a7fe2a.css.map",
-    "main.81cdd844.js.map": "/mechanical-automatrix/static/js/main.81cdd844.js.map"
+    "main.3bc74f85.css.map": "/mechanical-automatrix/static/css/main.3bc74f85.css.map",
+    "main.6dc969d1.js.map": "/mechanical-automatrix/static/js/main.6dc969d1.js.map"
   },
   "entrypoints": [
-    "static/css/main.04a7fe2a.css",
-    "static/js/main.81cdd844.js"
+    "static/css/main.3bc74f85.css",
+    "static/js/main.6dc969d1.js"
   ]
 }
